@@ -1,4 +1,4 @@
-# AFNetworking解析
+# AFNetworking解析By draveness
 
 摘自[blog](http://draveness.me/)系列：[AFNetworking 概述（一）](http://draveness.me/afnetworking1.html) 等
 
@@ -15,7 +15,7 @@
         - 初始化会话（session），并设置会话的代理以及代理队列
         - 初始化管理响应序列化（AFJSONResponseSerializer），安全认证（AFSecurityPolicy）以及监控网络状态（AFNetworkReachabilityManager）的实例
         - 初始化保存 data task 的字典（mutableTaskDelegatesKeyedByTaskIdentifier）与锁对象 **用于标识请求task**
-        - ???获取session的初始化task(getTasksWithCompletionHandler:) *不清楚是否起作用*
+        - 置空task关联的代理(getTasksWithCompletionHandler:) 作用：为了从后台回来，重新初始化session，防止一些之前的后台请求任务，导致程序的crash。
     
     2. 管理 NSURLSessionTask
         获得了 AFURLSessionManager 的实例之后，我们可以通过以下方法创建 NSURLSessionDataTask 的实例
